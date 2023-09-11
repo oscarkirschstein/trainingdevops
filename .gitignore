@@ -94,3 +94,4 @@ ENV/
 
 # mypy
 .mypy_cache/
+python_test_report.xml

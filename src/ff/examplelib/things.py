@@ -3,9 +3,6 @@ import logging
 import math
 import typing as t
 
-# example of private library import
-from ff import collections  # noqa
-
 # example of a constant
 DOZEN = 12
 

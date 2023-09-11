@@ -44,7 +44,7 @@ function RunLint {
 }
 
 function RunTypeCheck {
-    & mypy --pretty -p klm.hero
+    & mypy --pretty -p src
     & mypy --pretty tests 
     Write-Output "Type-check command executed successfully."
 }
@@ -78,7 +78,12 @@ function RunDocumentation {
 # Determine the OS
 # Construct the path to the virtual environment activation script
 $venvBase = "./.venv"
-$activateScript = if ($IsWindows) { "Scripts\activate" } else { "bin/activate" }
+# Determine the OS
+$IsWinOS = $false
+if ([System.Environment]::OSVersion.Platform -eq "Win32NT") {
+    $IsWinOS = $true
+}
+$activateScript = if ($IsWinOS) { "Scripts\activate" } else { "bin/activate" }
 $activatePath = Join-Path -Path $venvBase -ChildPath $activateScript
 
 # Check if the activation script exists

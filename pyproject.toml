@@ -1,0 +1,94 @@
+[tool.poetry]
+name = "ff-examplelib"
+version = "4.7.0"
+description = "An example Python library"
+authors = ["Ramses Kools <ramses.kools@futurefacts.nl>"]
+readme = "README.md"
+homepage = "https://TODO"
+repository = "https://TODO"
+documentation = "https://TODO/docs"
+keywords = ["ff", "example", "examplelib", "lib"]
+classifiers = [
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.9",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Topic :: Software Development :: Libraries :: Python Modules",
+]
+include = ["CHANGELOG.md", "README.md"]
+packages = [
+    { include = "ff", from = "src" },
+]
+
+[tool.poetry.dependencies]
+numpy = "^1.19.5"
+python = ">=3.9,<4"
+# to demonstrate a private dependency
+"klm.collections" = ">2.0.0,<4"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1"
+flake8 = "^6.0.0"
+mypy = "^1.0"
+hypothesis = "^6.0.2"
+pytest = "^7.0.1"
+pytest-cov = "^4.0.0"
+isort = "^5.6.4"
+tox = "^4.1.2"
+sphinx = "^7"
+
+
+[tool.poetry.scripts]
+# here you can create scripts https://python-poetry.org/docs/pyproject/#scripts
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.hg
+  | \.git
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = 'black'
+line_length = 79
+
+[tool.pytest.ini_options]
+# here some specific options for pytest
+markers = [
+    'slow: marks tests as slow (deselect with `-m "not slow"`)'
+]
+
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+fail_under = 90
+exclude_lines = [
+  'pragma: no cover',
+  'raise NotImplementedError',
+  '\.\.\.',
+]
+
+[tool.coverage.html]
+directory = './coverage'
+
+[tool.coverage.xml]
+output = './coverage/cov.xml'
+
+[tool.mypy]
+# please check https://github.com/python/mypy/issues/5205 for when this will be supported
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

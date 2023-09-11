@@ -29,15 +29,4 @@ pyenv local 3.10.9
 Now you have python version 3.10.9 installed and set as your global python version. For the last command `pyenv local` you should navigate to the project directory where you want to use that version of python. 
 
 ## Poetry
-Info: https://python-poetry.org/docs/#installing-with-the-official-installer 
-
-installation via Windows Powershell:
-```powershell
-(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python - 
-```
-After installating and restarting your Powershell (or command prompt or terminal) you can test Poetry with:
-```powershell
-poetry --version
-```
-
-If you get the `command not found` error, it is necessary to add the path where the pyenv executable is located to your user or system PATH.
+Installing Poetry in your system is required as well. How to do this is found [HERE](poetry.md)

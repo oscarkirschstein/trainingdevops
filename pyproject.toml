@@ -23,8 +23,6 @@ packages = [
 [tool.poetry.dependencies]
 numpy = "^1.19.5"
 python = ">=3.9,<4"
-# to demonstrate a private dependency
-"klm.collections" = ">2.0.0,<4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1"

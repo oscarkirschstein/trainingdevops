@@ -61,8 +61,8 @@ Development guide
 ### Requirements
 
 - Supported Python versions (see `pyproject.toml` )installed.
-  See [HERE](./docs/pyenv.md).
-- The poetry dependency manager. Install as described [HERE](./docs/poetry.md)
+  See [HERE](./explanation/pyenv.md).
+- The poetry dependency manager. Install as described [HERE](./explanation/poetry.md)
 
 ### Setup
 
@@ -115,10 +115,20 @@ To analyze test coverage, use:
 make pytest
 ```
 
+On Windows:
+```powershell
+.\scripts\make.ps1 pytest
+```
+
 ### Type checking
 
 ```bash
 make type-check
+```
+
+On Windows:
+```powershell
+.\scripts\make.ps1 type-check
 ```
 
 ### Style and formatting
@@ -130,10 +140,20 @@ worry about the nitty-gritty of code style.
 make format-check
 ```
 
+On Windows:
+```powershell
+.\scripts\make.ps1 format-check
+```
+
 Use `isort` to automatically sort imports.
 
 ```bash
 make isort-check
+```
+
+On Windows:
+```powershell
+.\scripts\make.ps1 isort-check
 ```
 
 `flake8` checks some additional things that can't be fixed automatically
@@ -143,10 +163,20 @@ with `black`. Run this command to list any issues:
 make lint
 ```
 
+On Windows:
+```powershell
+.\scripts\make.ps1 lint
+```
+
 To fix `black` and `isort` issues automatically, run:
 
 ```bash
 make fix
+```
+
+On Windows:
+```powershell
+.\scripts\make.ps1 fix
 ```
 
 ### Documentation
@@ -155,6 +185,11 @@ To generate documentation with `sphinx`, run the following command:
 
 ```bash
 make documentation
+```
+
+On Windows:
+```powershell
+.\scripts\make.ps1 documentation
 ```
 
 This command will output a local URI which you can open in your browser.

@@ -39,6 +39,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -47,8 +48,8 @@ templates_path = ["_templates"]
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-# source_suffix = ['.rst', '.md']
-source_suffix = ".rst"
+source_suffix = ['.rst', '.md']
+# source_suffix = ".rst"
 
 # The master toctree document.
 master_doc = "index"
@@ -75,10 +76,12 @@ highlight_language = "python3"
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {"description": metadata["Description"]}
+# The Summary field of metadata contains the description in pyproject.toml
+# The Description field of metadata contains the README.md
+#
+html_theme_options = {"description": metadata["Summary"]}
 
 html_sidebars = {"**": ["about.html", "navigation.html", "searchbox.html"]}
-
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}

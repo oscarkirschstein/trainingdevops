@@ -4,9 +4,9 @@ version = "0.1.0"
 description = "An example Python library"
 authors = ["Ramses Kools <ramses.kools@futurefacts.nl>"]
 readme = "README.md"
-homepage = "https://TODO"
-repository = "https://TODO"
-documentation = "https://TODO/docs"
+homepage = "https://github.com/ramsesk/my_python_template"
+repository = "https://github.com/ramsesk/my_python_template"
+documentation = "https://github.com/ramsesk/my_python_template"
 keywords = ["ff", "example", "examplelib", "lib"]
 classifiers = [
 	"Programming Language :: Python :: 3",

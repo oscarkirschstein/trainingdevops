@@ -33,4 +33,4 @@ pytest:
 test: check pytest
 
 documentation:
-	sphinx-build -d docs_tree docs docs_out --color -bhtml
+	sphinx-build -d docs/_build/docs_tree docs docs/_build/docs_out -bhtml

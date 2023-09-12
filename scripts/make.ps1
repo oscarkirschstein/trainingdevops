@@ -69,7 +69,7 @@ function RunTest {
 }
 
 function RunDocumentation {
-    & sphinx-build -d docs_tree docs docs_out -bhtml
+    & sphinx-build -d docs/_build/docs_tree docs docs/_build/docs_out -bhtml
     Write-Output "Documentation command executed successfully."
 }
 

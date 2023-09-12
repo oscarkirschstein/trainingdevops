@@ -14,7 +14,7 @@ Contents
 
    api.rst
    glossary.rst
-   readme_link.md
+   README <readme_link.md>
 
 
 Indices and tables

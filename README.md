@@ -203,8 +203,9 @@ Please update the `CHANGLELOG.md` and the version in `pyproject.toml` accordingl
 
 ### Publishing
 
-Commits on the `main` branch are automatically published
-if the `version` in `pyproject.toml` has not yet been tagged.
-Do *not* create `v{X.X.X}` tags manually.
-After publishing to KL nexus, a tag is automatically created.
-These steps can be seen in the build log.
+TODO. 
+
+It is better that a pipeline is configured that automatically publishes 
+each new commit to the `main` branch. Every new version should be tagged then as well.
+
+Make sure pyproject.toml's version is updated.

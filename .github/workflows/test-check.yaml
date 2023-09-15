@@ -1,4 +1,4 @@
-name: Python Check and Test the HERO Python code
+name: Python Checks and Tests
 
 on: 
   pull_request:

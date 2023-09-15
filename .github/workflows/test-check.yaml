@@ -91,7 +91,7 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Python PyTest py310
+    - name: Python PyTest py39
       shell: bash
       run: |
         source .venv/bin/activate
@@ -110,26 +110,25 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Setup Python 3.9
+    - name: Setup Python 3.10
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.10
 
     - name: Python PyTest py310
       shell: bash
       run: |
-        source .venv/bin/activate
-        tox -r -e py39
+        tox -r -e py310
       
     - name: Upload Test Artifacts
       uses: actions/upload-artifact@v3
       if: always()
       with:
-        name: test_report_py39
+        name: test_report_py310
         path: ./test_report.xml
 
   publish-pytest-results:
-    needs: [test-check-py311, test-py310, test-py310]
+    needs: [test-check-py311, test-py310, test-py39]
     runs-on: ubuntu-latest
     permissions:
       checks: write

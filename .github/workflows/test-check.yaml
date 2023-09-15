@@ -77,7 +77,7 @@ jobs:
       if: always()
       with:
         name: test_report_py311
-        path: ./test_report.xml
+        path: test_report.xml
         
   test-py39:
     runs-on: ubuntu-latest
@@ -116,7 +116,7 @@ jobs:
       if: always()
       with:
         name: test_report_py39
-        path: ./test_report.xml
+        path: test_report.xml
   
   test-py310:
     runs-on: ubuntu-latest
@@ -155,7 +155,7 @@ jobs:
       if: always()
       with:
         name: test_report_py310
-        path: ./test_report.xml
+        path: test_report.xml
 
   publish-pytest-results:
     needs: [test-check-py311, test-py310, test-py39]
@@ -169,7 +169,13 @@ jobs:
       # only needed for private repository
       issues: read
     if: always()
+
     steps:
+    - name: Download Test Artifacts
+      uses: actions/download-artifact@v3
+      with:
+        path: artifacts
+        
     - name: Publish Test Results
       id: test-results
       uses: EnricoMi/publish-unit-test-result-action@v2

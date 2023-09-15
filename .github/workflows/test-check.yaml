@@ -1,0 +1,147 @@
+name: Python Check and Test the HERO Python code
+
+on: 
+  pull_request:
+    branches:
+      - '**'
+    paths-ignore:
+      - 'README.md'
+      - 'explanation/**'
+      - 'docs/**'
+  workflow_dispatch:
+
+# to prevent unnecessary runs, cancel any in-progress runs if a new run is triggered
+concurrency:
+  group: ${{github.workflow}}-${{ github.head_ref || github.ref_name }} 
+  cancel-in-progress: true 
+
+jobs:
+  test-check-py311:
+    timeout-minutes: 20
+    name: Python repository checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure Python 
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    
+    - name: Install Poetry
+      shell: bash
+      run: |
+        curl -sSL https://install.python-poetry.org | python -
+        echo "$HOME/.poetry/bin" >> $GITHUB_PATH
+        
+    - name: Install Python environment
+      shell: bash
+      run: |
+        poetry --version
+        python -m venv .venv
+        source .venv/bin/activate
+        poetry install
+
+    - name: Check Poetry lockfile
+      shell: bash
+      run: |
+        poetry lock --check
+
+    - name: Python isort
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        tox -r -e isort
+        
+    - name: Python Lint
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        tox -r -e lint
+        
+    - name: Python TypeCheck
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        tox -r -e typecheck 
+      
+    - name: Pytest + code coverage
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        tox -r -e py311
+
+    - name: Upload Test Artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test_report_py311
+        path: ./test_report.xml
+        
+  test-py39:
+    timeout-minutes: 20
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Python PyTest py310
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        tox -r -e py39
+      
+    - name: Upload Test Artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test_report_py39
+        path: ./test_report.xml
+  
+  test-py310:
+    timeout-minutes: 20
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Python PyTest py310
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        tox -r -e py39
+      
+    - name: Upload Test Artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test_report_py39
+        path: ./test_report.xml
+
+  publish-pytest-results:
+    needs: [test-check-py311, test-py310, test-py310]
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      # not needed with comment_mode: off
+      pull-requests: write
+      # only needed for private repository
+      contents: read
+      # only needed for private repository
+      issues: read
+    if: always()
+    - name: Publish Test Results
+      id: test-results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: "artifacts/**/*.xml"
+
+    - name: Test Report Conclusion
+      run: echo "The tests conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"

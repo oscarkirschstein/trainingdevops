@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ff-examplelib"
-version = "0.1.0"
+version = "0.2.0"
 description = "An example Python library"
 authors = ["Ramses Kools <ramses.kools@futurefacts.nl>"]
 readme = "README.md"

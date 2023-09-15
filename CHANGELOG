@@ -4,6 +4,11 @@ Release history
 development
 -----------
 
+0.2.0 (2023-09-15)
+------------------
+
+- Added github actions pipeline
+
 0.1.0 (2023-09-11)
 ------------------
 
@@ -14,4 +19,3 @@ development
 - Poetry framework
 - tox framework
 - mypy framework
-- 

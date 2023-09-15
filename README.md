@@ -194,6 +194,15 @@ On Windows:
 
 This command will output a local URI which you can open in your browser.
 
+### Github Actions
+A pipeline to run tests and checks on Github can be found in `.github/workflows/test-check.yaml`. 
+This pipeline can be started manually. It will also start automatically for each pull-request.
+
+It checks the code and runs tests on python version 3.11. On Python version 3.9 and 3.10 it also runs and tests the code, but does not do thorough checking.
+
+It is possible to make this succesfull pipeline run a mandatory check of any Pull Request, more info:
+[HERE](https://docs.github.com/en/actions/using-workflows/required-workflows)
+
 ### Contributing
 
 To contribute, create a pull request.

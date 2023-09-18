@@ -1,6 +1,8 @@
 Example Python project
 ======================
 
+[![Python Checks and Tests](https://github.com/ramsesk/my_python_template/actions/workflows/test-check.yaml/badge.svg)](https://github.com/ramsesk/my_python_template/actions/workflows/test-check.yaml)
+
 This is an example of a Python Project. Use this
 as a starting point for creating new python projects.
 

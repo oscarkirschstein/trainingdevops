@@ -49,7 +49,7 @@ To use this repository as a template, perform the following steps:
 
   ```bash
   cd ff.examplelib
-  cp -r {README.md,CHANGELOG.md,mypy.ini,poetry.toml,pyproject.toml,poetry.lock,tox.ini,docs,src,tests,.gitignore,Makefile,bamboo-specs} path/to/new/repo/
+  cp -r {README.md,CHANGELOG.md,mypy.ini,pyproject.toml,poetry.lock,tox.ini,docs,src,tests,.gitignore,Makefile,bamboo-specs} path/to/new/repo/
   ```
 - change the description in the README.
 - change the package metadata in `pyproject.toml`. Reset the version.

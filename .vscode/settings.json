@@ -1,0 +1,56 @@
+{
+    "python.testing.pytestArgs": [
+        "tests"
+    ], // ./tests is the default test environment
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    // don't accept completion on enter
+    "editor.acceptSuggestionOnEnter": "on",
+    // always let 5 lines as a margin when you scroll
+    "editor.cursorSurroundingLines": 5,
+    // format the code you copy-paste in your editor
+    "editor.formatOnPaste": true,
+    // disable the minimap on the right (distracting)
+    "editor.minimap.enabled": false,
+    // don't highlight the current line (distracting)
+    "editor.renderLineHighlight": "none",
+    // smooth scrolling for smooth developments :)
+    "editor.smoothScrolling": true,
+    // required to use IntelliSense suggestions
+    "editor.suggestSelection": "first",
+    // enable tab completion (complete code by pressing tab)
+    "editor.tabCompletion": "on",
+    // if the line is longer than your window, don't display it on several lines
+    "editor.wordWrap": "off",
+    // don't automatically select files in explorer when you open them
+    "explorer.autoReveal": false,
+    // save your file before switching to another one
+    "files.autoSave": "onFocusChange",
+    // set Python as the default language for new files
+    "files.defaultLanguage": "python",
+    // always have an empty line at the end of the file
+    "files.insertFinalNewline": true,
+    // use VS Code file explorer instead of the operating system
+    "files.simpleDialog.enable": true,
+    // remove whitespaces at the end of each line
+    "files.trimTrailingWhitespace": true,
+    // automatically fetch repository changes from GitHub
+    "git.autofetch": true,
+    // don't ask for confirmation before synchronizing git repositories
+    "git.confirmSync": false,
+    // don't automatically commit all unstaged files using VS Code Source Control Tab
+    "git.enableSmartCommit": false,
+    // automatically format Python imports and code on save
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+    },
+    // focus on the tab on the left instead of the most recent one
+    "workbench.editor.focusRecentEditorAfterClose": false,
+    // all open tab will be opened in multiple line (instead of scroll bar)
+    "workbench.editor.wrapTabs": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+}

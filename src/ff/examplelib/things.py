@@ -1,4 +1,5 @@
 """This modules contains some random things"""
+
 import logging
 import math
 import typing as t

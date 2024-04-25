@@ -1,4 +1,5 @@
 """A subpackage with more things!"""
+
 import math
 import typing as t
 from dataclasses import dataclass
@@ -55,9 +56,7 @@ class Point:
         Returns:
             The average point
         """
-        return cls(
-            average([p.x for p in points]), average([p.y for p in points])
-        )
+        return cls(average([p.x for p in points]), average([p.y for p in points]))
 
 
 def fit_line(points: t.Collection[Point]) -> t.Tuple[float, float]:

@@ -1,5 +1,5 @@
 # Define the commands as functions for each target
-$global:modules = "src/"
+$global:modules = "src/ff"
 
 
 function RunClean {

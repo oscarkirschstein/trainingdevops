@@ -1,4 +1,6 @@
 # Define the commands as functions for each target
+$global:modules = "src/"
+
 
 function RunClean {
     Remove-Item -Path ".coverage" -Force -Recurse
@@ -12,64 +14,37 @@ function RunClean {
     Write-Output "Clean command executed successfully."
 }
 
-function RunIsort {
-    & isort .
-    Write-Output "Isort command executed successfully."
-}
-
-function RunIsortCheck {
-    & isort . --check-only --diff
-    Write-Output "Isort-check command executed successfully."
-}
-
 function RunFormat {
-    & black .
-    Write-Output "Format command executed successfully."
+    & poetry run ruff format $global:modules
+    Write-Output "Format command executed successfully for module(s): $global:modules"
 }
 
-function RunFormatCheck {
-    & black --check --diff .
-    Write-Output "Format-check command executed successfully."
-}
-
-function RunFix {
-    RunIsort
-    RunFormat
-    Write-Output "Fix command executed successfully."
-}
-
-function RunLint {
-    & flake8 --exclude=.tox,build,.venv
-    Write-Output "Lint command executed successfully."
-}
 
 function RunTypeCheck {
-    & mypy --pretty -p src
-    & mypy --pretty tests 
+    & poetry run mypy --pretty -p $global:modules
+    & poetry run mypy --pretty tests # Not sure if we need to do this?
     Write-Output "Type-check command executed successfully."
 }
 
 function RunCheck {
-    RunLint
-    RunIsortCheck
-    RunFormatCheck
+    & poetry run ruff check $global:modules
     RunTypeCheck
     Write-Output "Check command executed successfully."
 }
 
 function RunPytest {
-    & pytest --cov=ff.examplelib --junitxml=.\python_test_report.xml --basetemp=.\\tests\\.tmp
+    & poetry run pytest --cov=ff.examplelib --junitxml=.\python_test_report.xml --basetemp=.\\tests\\.tmp
     Write-Output "Pytest command executed successfully."
 }
 
-function RunTest {
+function RunCheckTest {
     RunCheck
     RunPytest
-    Write-Output "Test command executed successfully."
+    Write-Output "Check + Test command executed successfully."
 }
 
 function RunDocumentation {
-    & sphinx-build -d docs/_build/docs_tree docs docs/_build/docs_out -bhtml
+    & poetry run sphinx-build -d docs/_build/docs_tree docs docs/_build/docs_out -bhtml
     Write-Output "Documentation command executed successfully."
 }
 
@@ -97,16 +72,11 @@ if (Test-Path -Path $activatePath) {
 
 switch ($args[0]) {
     "clean" { RunClean }
-    "isort" { RunIsort }
-    "isort-check" { RunIsortCheck }
     "format" { RunFormat }
-    "format-check" { RunFormatCheck }
-    "fix" { RunFix }
-    "lint" { RunLint }
     "type-check" { RunTypeCheck }
     "pytest" { RunPytest }
     "check" { RunCheck }
-    "test" { RunTest }
+    "check-test" { RunCheckTest }
     "documentation" { RunDocumentation }
     default { Write-Output "Invalid argument. Please specify a valid command: clean, isort, isort-check, format, format-check, fix, lint, type-check, pytest, check, test, or documentation." }
 }

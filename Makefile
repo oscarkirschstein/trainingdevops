@@ -1,3 +1,4 @@
+modules = src/ff
 .PHONY: clean isort isort-check format format-check fix lint type-check pytest check test documentation
 
 clean:
@@ -5,32 +6,19 @@ clean:
 	rm -rf dist
 	find . | grep -E "(__pycache__|docs_.*$$|\.pyc|\.pyo$$)" | xargs rm -rf
 
-isort:
-	isort .
-
-isort-check:
-	isort . --check-only --diff
-
 format:
-	black .
+	poetry run ruff format $(modules)
 
-format-check:
-	black --check --diff .
-
-fix: isort format
-
-lint:
-	flake8 --exclude=.tox,build
+check:
+	poetry run ruff check $(modules)
 
 type-check:
-	mypy --pretty src/ff tests
-
-check: lint isort-check format-check type-check
+	poetry run mypy --pretty src/ff tests
 
 pytest:
-	pytest --cov=ff.examplelib --junitxml=python_test_report.xml --basetemp=./tests/.tmp
+	poetry run pytest --cov=ff.examplelib --junitxml=python_test_report.xml --basetemp=./tests/.tmp
 
 test: check pytest
 
 documentation:
-	sphinx-build -d docs/_build/docs_tree docs docs/_build/docs_out -bhtml
+	poetry run sphinx-build -d docs/_build/docs_tree docs docs/_build/docs_out -bhtml

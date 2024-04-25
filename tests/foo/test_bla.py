@@ -2,16 +2,14 @@ import math
 from dataclasses import astuple
 
 import pytest
-from pytest import approx
-
 from ff.examplelib.foo import bla
 
 
 # a fixture allows us to re-use data in multiple tests.
 # This can be useful to reduce the necessary setup code for each test.
-@pytest.fixture
+@pytest.fixture()
 def points():
-    """a collection of points"""
+    """A collection of points"""
     return [
         bla.Point(3.4, 2),
         bla.Point(6, 2),
@@ -32,7 +30,7 @@ class TestPointDistance:
 
 def test_average_point(points):
     avg = bla.Point.average(points)
-    assert astuple(avg) == approx((6.733_333, 2.183_333))
+    assert astuple(avg) == pytest.approx((6.733_333, 2.183_333))
 
 
 def test_variance():
@@ -48,9 +46,7 @@ class TestFitLine:
             bla.fit_line([bla.Point(3, 0)])
 
     def test_example(self, points):
-        assert bla.fit_line(points) == approx((0.2108, 0.7641), abs=1e-3)
+        assert bla.fit_line(points) == pytest.approx((0.2108, 0.7641), abs=1e-3)
 
     def test_linear(self):
-        assert bla.fit_line([bla.Point(1, 3), bla.Point(3, 3)]) == approx(
-            (0, 3)
-        )
+        assert bla.fit_line([bla.Point(1, 3), bla.Point(3, 3)]) == pytest.approx((0, 3))

@@ -7,12 +7,12 @@ This is an example of a Python Project. Use this
 as a starting point for creating new python projects.
 
 There are multiple different kinds of Python projects possible.
-This project is not an app. 
-This project is not a library. 
+This project is not an app.
+This project is not a library.
 This project is not a data science project.
 
 This project does cover some basics that could fit in all of the previously managed
-different types of python projects. 
+different types of python projects.
 This project features examples of:
 
 - structuring a python module
@@ -36,9 +36,8 @@ Installation
 
 **TODO**
 
-For now I don't think a project that is started from this template will have a clear installation instruction. 
+For now I don't think a project that is started from this template will have a clear installation instruction.
 Perhaps it will have clear "starting development" instructions instead.
-
 
 Usage
 -----
@@ -51,12 +50,13 @@ To use this repository as a template, perform the following steps:
   cd ff.examplelib
   cp -r {README.md,CHANGELOG.md,mypy.ini,pyproject.toml,poetry.lock,tox.ini,docs,src,tests,.gitignore,Makefile,bamboo-specs} path/to/new/repo/
   ```
+
 - change the description in the README.
 - change the package metadata in `pyproject.toml`. Reset the version.
 - change the package name. Change this in all copied files!
   Do a text search (e.g. `grep`) to check you've found all references.
 - remove any unneeded dependencies in `pyproject.toml` (e.g. `numpy`)
-  
+
 Development guide
 -----------------
 
@@ -71,11 +71,13 @@ Development guide
 First create a virtual environment:
 
 On Mac:
+
 ```bash
 pyenv virtualenv 3.9.8 exampleproj_3_9_8
 ```
 
 On Windows:
+
 ```powershell
 pyenv local 3.9.8
 python -m venv .venv
@@ -90,6 +92,7 @@ poetry install
 ```
 
 ### make/run script?
+
 **TODO** write some explanation on the make/run script.
 
 ### Checks
@@ -118,6 +121,7 @@ make pytest
 ```
 
 On Windows:
+
 ```powershell
 .\scripts\make.ps1 pytest
 ```
@@ -129,6 +133,7 @@ make type-check
 ```
 
 On Windows:
+
 ```powershell
 .\scripts\make.ps1 type-check
 ```
@@ -143,6 +148,7 @@ make format-check
 ```
 
 On Windows:
+
 ```powershell
 .\scripts\make.ps1 format-check
 ```
@@ -154,6 +160,7 @@ make isort-check
 ```
 
 On Windows:
+
 ```powershell
 .\scripts\make.ps1 isort-check
 ```
@@ -166,6 +173,7 @@ make lint
 ```
 
 On Windows:
+
 ```powershell
 .\scripts\make.ps1 lint
 ```
@@ -177,6 +185,7 @@ make fix
 ```
 
 On Windows:
+
 ```powershell
 .\scripts\make.ps1 fix
 ```
@@ -190,6 +199,7 @@ make documentation
 ```
 
 On Windows:
+
 ```powershell
 .\scripts\make.ps1 documentation
 ```
@@ -197,7 +207,8 @@ On Windows:
 This command will output a local URI which you can open in your browser.
 
 ### Github Actions
-A pipeline to run tests and checks on Github can be found in `.github/workflows/test-check.yaml`. 
+
+A pipeline to run tests and checks on Github can be found in `.github/workflows/test-check.yaml`.
 This pipeline can be started manually. It will also start automatically for each pull-request.
 
 It checks the code and runs tests on python version 3.11. On Python version 3.9 and 3.10 it also runs and tests the code, but does not do thorough checking.
@@ -214,9 +225,9 @@ Please update the `CHANGLELOG.md` and the version in `pyproject.toml` accordingl
 
 ### Publishing
 
-TODO. 
+TODO.
 
-It is better that a pipeline is configured that automatically publishes 
+It is better that a pipeline is configured that automatically publishes
 each new commit to the `main` branch. Every new version should be tagged then as well.
 
 Make sure pyproject.toml's version is updated.

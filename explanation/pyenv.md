@@ -4,7 +4,7 @@
 
 See the [macbook guide](./macbook-setup.md) for installing `pyenv` AND `pyenv-virtualenv`
 
-Seet the [windows guide](./windows-setup.md) for install `pyenv` (`pyenv-win`). Pyenv-win does not have the pyenv-virtualenv command. 
+Seet the [windows guide](./windows-setup.md) for install `pyenv` (`pyenv-win`). Pyenv-win does not have the pyenv-virtualenv command.
 For working with virtual environments read this document [pyenv-win and virtualenv on windows](https://rkadezone.wordpress.com/2020/09/14/pyenv-win-virtualenv-windows/)
 
 ## Recommended usage

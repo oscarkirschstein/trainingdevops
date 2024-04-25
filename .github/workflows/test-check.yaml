@@ -1,6 +1,6 @@
 name: Python Checks and Tests
 
-on: 
+on:
   pull_request:
     branches:
       - '**'
@@ -12,29 +12,29 @@ on:
 
 # to prevent unnecessary runs, cancel any in-progress runs if a new run is triggered
 concurrency:
-  group: ${{github.workflow}}-${{ github.head_ref || github.ref_name }} 
-  cancel-in-progress: true 
+  group: ${{github.workflow}}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   test-check-py311:
     timeout-minutes: 20
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Configure Python 
+    - name: Configure Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    
+
     - name: Install Poetry
       shell: bash
       run: |
         curl -sSL https://install.python-poetry.org | python -
         echo "$HOME/.poetry/bin" >> $GITHUB_PATH
-        
+
     - name: Install Python environment
       shell: bash
       run: |
@@ -48,24 +48,18 @@ jobs:
       run: |
         poetry lock --check
 
-    - name: Python isort
-      shell: bash
-      run: |
-        source .venv/bin/activate
-        tox -r -e isort
-        
     - name: Python Lint
       shell: bash
       run: |
         source .venv/bin/activate
         tox -r -e lint
-        
+
     - name: Python TypeCheck
       shell: bash
       run: |
         source .venv/bin/activate
-        tox -r -e typecheck 
-      
+        tox -r -e typecheck
+
     - name: Pytest + code coverage
       shell: bash
       run: |
@@ -78,14 +72,14 @@ jobs:
       with:
         name: test_report_py311
         path: test_report.xml
-        
+
   test-py39:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      
+
     - name: Setup Python 3.9
       uses: actions/setup-python@v4
       with:
@@ -96,28 +90,28 @@ jobs:
       run: |
         curl -sSL https://install.python-poetry.org | python -
         echo "$HOME/.poetry/bin" >> $GITHUB_PATH
-          
+
     - name: Install Python environment
       shell: bash
       run: |
         poetry --version
         python -m venv .venv
         source .venv/bin/activate
-        poetry install        
+        poetry install
 
     - name: Python PyTest py39
       shell: bash
       run: |
         source .venv/bin/activate
         tox -r -e py39
-      
+
     - name: Upload Test Artifacts
       uses: actions/upload-artifact@v3
       if: always()
       with:
         name: test_report_py39
         path: test_report.xml
-  
+
   test-py310:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -135,7 +129,7 @@ jobs:
       run: |
         curl -sSL https://install.python-poetry.org | python -
         echo "$HOME/.poetry/bin" >> $GITHUB_PATH
-          
+
     - name: Install Python environment
       shell: bash
       run: |
@@ -149,7 +143,7 @@ jobs:
       run: |
         source .venv/bin/activate
         tox -r -e py310
-      
+
     - name: Upload Test Artifacts
       uses: actions/upload-artifact@v3
       if: always()
@@ -175,7 +169,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         path: artifacts
-        
+
     - name: Publish Test Results
       id: test-results
       uses: EnricoMi/publish-unit-test-result-action@v2

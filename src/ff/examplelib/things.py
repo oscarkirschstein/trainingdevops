@@ -2,7 +2,6 @@
 
 import logging
 import math
-import typing as t
 
 # example of a constant
 DOZEN = 12
@@ -39,7 +38,6 @@ def my_div(a: float, b: float) -> float:
         ValueError: If the divisor is zero
 
     Example:
-
         >>> a = 10
         >>> b = 2.5
         >>> a / b
@@ -53,7 +51,7 @@ def my_div(a: float, b: float) -> float:
     return a / b
 
 
-def average(numbers: t.List[float]) -> float:
+def average(numbers: list[float]) -> float:
     """Calculate the average of a list of numbers
 
     Args:
@@ -110,5 +108,5 @@ def fibonacci(n: int) -> int:
 #   - are not directly tested
 #   - do not need a full docstring
 def _repeat_dozen(string: str) -> str:
-    """repeat a string a dozen times"""
+    """Repeat a string a dozen times"""
     return string * DOZEN

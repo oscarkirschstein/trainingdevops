@@ -9,7 +9,7 @@ import numpy as np
 from ..things import average
 
 
-def variance(numbers: t.List[float]) -> float:
+def variance(numbers: list[float]) -> float:
     """Determine the variance of a list of numbers
 
     Args:
@@ -59,7 +59,7 @@ class Point:
         return cls(average([p.x for p in points]), average([p.y for p in points]))
 
 
-def fit_line(points: t.Collection[Point]) -> t.Tuple[float, float]:
+def fit_line(points: t.Collection[Point]) -> tuple[float, float]:
     """Fit a line through several points by least-squares
 
     Args:
@@ -71,6 +71,6 @@ def fit_line(points: t.Collection[Point]) -> t.Tuple[float, float]:
     if len(points) < 2:
         raise ValueError("Too few points!")
     return t.cast(
-        t.Tuple[float, float],
+        tuple[float, float],
         tuple(np.polyfit([p.x for p in points], [p.y for p in points], deg=1)),
     )

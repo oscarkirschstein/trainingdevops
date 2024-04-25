@@ -1,8 +1,4 @@
 import pytest
-from hypothesis import given
-from hypothesis.strategies import floats, integers, lists
-from pytest import approx
-
 from ff.examplelib.things import (
     average,
     fibonacci,
@@ -10,6 +6,8 @@ from ff.examplelib.things import (
     my_div,
     repeat_enthousiastically_several_times,
 )
+from hypothesis import given
+from hypothesis.strategies import floats, integers, lists
 
 
 def test_version():
@@ -32,7 +30,7 @@ class TestMyDiv:
         # when comparing floats, be sure to use pytest.approx.
         # this is necessary because of the intricacies of floating-point
         # arithmetic
-        assert my_div(1, 8) == approx(0.125)
+        assert my_div(1, 8) == pytest.approx(0.125)
 
     # the parametrize decorator allows us to test multiple cases,
     # without writing many test functions
@@ -41,7 +39,7 @@ class TestMyDiv:
         [(4, 2, 2), (5, 2, 2.5), (1, 3, 0.333_333_333), (5, 5, 1), (0, 3, 0)],
     )
     def test_multiple_cases(self, x, y, expect):
-        assert my_div(x, y) == approx(expect)
+        assert my_div(x, y) == pytest.approx(expect)
 
     def test_zero_divisor(self):
         # test that the correct exceptions will be raised in certain cases
@@ -72,7 +70,7 @@ class TestFibonacci:
     # this test will be skipped unless --runslow is passed at the command line
     # how does it work? see the ``conftest.py`` file
     # and the pytest documentation
-    @pytest.mark.slow
+    @pytest.mark.slow()
     def test_large(self):
         assert fibonacci(30) > 9
 
@@ -85,6 +83,4 @@ class TestFibonacci:
 
 
 def test_repeat_enthousiastically_several_times():
-    assert repeat_enthousiastically_several_times(4) == (
-        "4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! "
-    )
+    assert repeat_enthousiastically_several_times(4) == ("4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! ")

@@ -96,28 +96,6 @@ ignore = [
 #    "S311", # Standard pseudo-random generators are not suitable for cryptographic purposes
 ]
 
-
-# [tool.black]
-# line-length = 79
-# include = '\.pyi?$'
-# exclude = '''
-# /(
-#     \.eggs
-#   | \.hg
-#   | \.git
-#   | \.mypy_cache
-#   | \.tox
-#   | \.venv
-#   | _build
-#   | build
-#   | dist
-# )/
-# '''
-
-# [tool.isort]
-# profile = 'black'
-# line_length = 79
-
 [tool.pytest.ini_options]
 # here some specific options for pytest
 markers = [
@@ -143,7 +121,19 @@ directory = './coverage'
 output = './coverage/cov.xml'
 
 [tool.mypy]
-# please check https://github.com/python/mypy/issues/5205 for when this will be supported
+# https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-strict
+strict = true # Can be put to false to allow for less stringent checking
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+check_untyped_defs = true
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = [
+  "numpy.*",
+]
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -35,7 +35,7 @@ class TestMyDiv:
     # the parametrize decorator allows us to test multiple cases,
     # without writing many test functions
     @pytest.mark.parametrize(
-        "x, y, expect",
+        ("x", "y", "expect"),
         [(4, 2, 2), (5, 2, 2.5), (1, 3, 0.333_333_333), (5, 5, 1), (0, 3, 0)],
     )
     def test_multiple_cases(self, x, y, expect):

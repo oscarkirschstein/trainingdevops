@@ -5,8 +5,7 @@ import typing as t
 from dataclasses import dataclass
 
 import numpy as np
-
-from ..things import average
+from ff.examplelib.things import average
 
 
 def variance(numbers: list[float]) -> float:
@@ -68,7 +67,7 @@ def fit_line(points: t.Collection[Point]) -> tuple[float, float]:
     Returns:
         The coefficients A and B for the line equation "y = A*x + B"
     """
-    if len(points) < 2:
+    if len(points) < 2:  # noqa: PLR2004
         raise ValueError("Too few points!")
     return t.cast(
         tuple[float, float],

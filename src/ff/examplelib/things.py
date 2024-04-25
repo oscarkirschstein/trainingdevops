@@ -1,4 +1,4 @@
-"""This modules contains some random things"""
+"""Contains some random things"""
 
 import logging
 import math

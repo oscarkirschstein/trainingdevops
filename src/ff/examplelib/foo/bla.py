@@ -5,6 +5,7 @@ import typing as t
 from dataclasses import dataclass
 
 import numpy as np
+
 from ff.examplelib.things import average
 
 

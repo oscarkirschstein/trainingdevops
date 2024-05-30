@@ -19,7 +19,15 @@ To get started it is best to mirror-clone this repository into a fresh github re
     - unix: `rm -rf ./git-lab.git`
   6. Clone the newly mirrored repository: `git clone https://github.com/YOURUSERNAME/YOUR-REPO.git`
 
+**_optional:_** go to your github repository. go to actions. Enable the actions.
 
+Exercises:
+
+- Create a new branch `feature/readme-update`. Change the README.MD. Push the branch to github. Merge the change via a Pull-Request (PR).
+- Which branches are available in the repository?
+- Merge `feature/improve-readme` via a PR.
+  - To learn, it's better to resolve any issues locally.
+- Merge `feature/fix-bla` via a PR  
 
 
 

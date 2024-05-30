@@ -1,5 +1,5 @@
 modules = src/ff
-.PHONY: clean isort isort-check format format-check fix lint type-check pytest check test documentation
+.PHONY: clean format type-check pytest check test documentation
 
 clean:
 	rm -rf .coverage .hypothesis .mypy_cache .pytest_cache .tox *.egg-info

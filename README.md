@@ -1,5 +1,4 @@
-Example Python project
-======================
+# Example Python project
 
 [![Python Checks and Tests](https://github.com/ramsesk/git-lab/actions/workflows/test-check.yaml/badge.svg)](https://github.com/ramsesk/git-lab/actions/workflows/test-check.yaml)
 
@@ -31,16 +30,8 @@ This project features examples of:
 - Setting up a build on github actions
 - ...
 
-Installation
-------------
 
-**TODO**
-
-For now I don't think a project that is started from this template will have a clear installation instruction.
-Perhaps it will have clear "starting development" instructions instead.
-
-Usage
------
+## Usage
 
 To use this repository as a template, perform the following steps:
 
@@ -57,8 +48,7 @@ To use this repository as a template, perform the following steps:
   Do a text search (e.g. `grep`) to check you've found all references.
 - remove any unneeded dependencies in `pyproject.toml` (e.g. `numpy`)
 
-Development guide
------------------
+## Development guide
 
 ### Requirements
 
@@ -93,7 +83,10 @@ poetry install
 
 ### make/run script?
 
-**TODO** write some explanation on the make/run script.
+All the tools that are used in this repo can be run via a script.
+A windows powershell script has been added for support on Windows: `./scripts/make.ps1`.
+On unix based systems the Makefile can be used.
+
 
 ### Checks
 
@@ -140,36 +133,17 @@ On Windows:
 
 ### Style and formatting
 
-`black` can be used to automatically format code, so you don\'t have to
+`ruff` can be used to automatically format code, so you don\'t have to
 worry about the nitty-gritty of code style.
 
 ```bash
-make format-check
+make check
 ```
 
 On Windows:
 
 ```powershell
-.\scripts\make.ps1 format-check
-```
-
-Use `isort` to automatically sort imports.
-
-```bash
-make isort-check
-```
-
-On Windows:
-
-```powershell
-.\scripts\make.ps1 isort-check
-```
-
-`flake8` checks some additional things that can't be fixed automatically
-with `black`. Run this command to list any issues:
-
-```bash
-make lint
+.\scripts\make.ps1 check
 ```
 
 On Windows:
@@ -178,16 +152,16 @@ On Windows:
 .\scripts\make.ps1 lint
 ```
 
-To fix `black` and `isort` issues automatically, run:
+To fix `ruff` issues automatically, run:
 
 ```bash
-make fix
+make format
 ```
 
 On Windows:
 
 ```powershell
-.\scripts\make.ps1 fix
+.\scripts\make.ps1 format
 ```
 
 ### Documentation

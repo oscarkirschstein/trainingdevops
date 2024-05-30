@@ -21,7 +21,7 @@ function RunFormat {
 
 
 function RunTypeCheck {
-    & poetry run mypy --pretty -p $global:modules
+    & poetry run mypy --pretty $global:modules
     & poetry run mypy --pretty tests # Not sure if we need to do this?
     Write-Output "Type-check command executed successfully."
 }

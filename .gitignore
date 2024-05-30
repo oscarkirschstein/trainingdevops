@@ -95,3 +95,6 @@ ENV/
 # mypy
 .mypy_cache/
 python_test_report.xml
+
+# Don't add the secret password
+secret_password.txt

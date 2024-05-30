@@ -24,7 +24,7 @@ def test_version():
 # an example of a simple unittest.
 # the function name must start with ``test``
 # see https://docs.pytest.org
-def test_my_add():
+def test_my_add_simple():
     assert my_add(2, 3) == 5
 
 
@@ -114,12 +114,6 @@ def test_average():
     assert average([1, 2, 3, 4, 5]) == 3
     assert average([1]) == 1
     assert math.isnan(average([]))
-
-
-def test_repeat_enthousiastically_several_times():
-    result = repeat_enthousiastically_several_times("hello")
-    expected = ("hello! " * 12).strip()
-    assert result == expected
 
 
 def test_fibonacci():

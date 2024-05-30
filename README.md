@@ -24,6 +24,7 @@ To get started it is best to mirror-clone this repository into a fresh github re
 Exercises:
 
 - Create a new branch `feature/readme-update`. Change the README.MD. Push the branch to github. Merge the change via a Pull-Request (PR).
+  - If you are working on github, fix atleast that the github-actions badge is pointing to your repositories badge. [**HINT**](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)
 - Which branches are available in the repository?
 - Merge `feature/improve-readme` via a PR.
   - To learn, it's better to resolve any issues locally.

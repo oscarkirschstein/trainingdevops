@@ -29,7 +29,13 @@ Exercises:
   - To learn, it's better to resolve any issues locally.
 - Merge `feature/fix-bla` via a PR  
 
+_Extra exercises:_
 
+- If you are familiar with Python: fix branch `feature/extra-things-for-the-library`
+  - This requires some python programming
+- **Remove the Password from the repo**
+  - Why doesn't it work if you just remove the `secret_password.txt` file from the repo?
+  - How can we make sure no one can see the `secret_password.txt`? --> [HINT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
 
 Example Python project
 ======================

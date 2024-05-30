@@ -1,11 +1,7 @@
+import math
+
 import pytest
-from ff.examplelib.things import (
-    average,
-    fibonacci,
-    my_add,
-    my_div,
-    repeat_enthousiastically_several_times,
-)
+from ff.examplelib.things import average, fibonacci, my_add, my_div, repeat_enthousiastically_several_times
 from hypothesis import given
 from hypothesis.strategies import floats, integers, lists
 
@@ -84,3 +80,9 @@ class TestFibonacci:
 
 def test_repeat_enthousiastically_several_times():
     assert repeat_enthousiastically_several_times(4) == ("4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! ")
+
+
+# also test when things go wrong
+def test_empty_average():
+    avg = average([])
+    assert avg is math.nan

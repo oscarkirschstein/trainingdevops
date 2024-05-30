@@ -101,6 +101,51 @@ def fibonacci(n: int) -> int:
         return fibonacci(n - 1) + fibonacci(n - 2)
 
 
+def get_maximum_value(numbers: list[float]) -> float:
+    """Get the maximum value from a list of numbers
+
+    Args:
+        numbers: The list of numbers
+
+    Returns:
+        The maximum value
+
+    Raises:
+        ValueError: If the list is empty
+    """
+    raise NotImplementedError
+
+
+def get_minimum_value(numbers: list[float]) -> float:
+    """Get the minimum value from a list of numbers
+
+    Args:
+        numbers: The list of numbers
+
+    Returns:
+        The minimum value
+
+    Raises:
+        ValueError: If the list is empty
+    """
+    raise NotImplementedError
+
+
+def get_median(numbers: list[float]) -> float:
+    """Calculate the median of a list of numbers
+
+    Args:
+        numbers: The list of numbers
+
+    Returns:
+        The median value
+
+    Raises:
+        ValueError: If the list is empty
+    """
+    raise NotImplementedError
+
+
 # example of a internal function.
 # internal functions *generally*:
 #   - start their names with an underscore

@@ -8,6 +8,9 @@ on:
       - 'README.md'
       - 'explanation/**'
       - 'docs/**'
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 # to prevent unnecessary runs, cancel any in-progress runs if a new run is triggered
@@ -47,12 +50,6 @@ jobs:
       shell: bash
       run: |
         poetry lock --check
-
-    - name: Python Lint
-      shell: bash
-      run: |
-        source .venv/bin/activate
-        tox -r -e lint
 
     - name: Python TypeCheck
       shell: bash

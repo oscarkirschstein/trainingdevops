@@ -1,3 +1,28 @@
+# Git-lab training
+This repository contain a template python project with some industry standards/best-practices included. 
+
+For the git-lab we will use this repository to learn `git`. 
+
+To get started it is best to mirror-clone this repository into a fresh github repository. 
+
+- Login to your personal github account
+  - Create an account if you don't have one already
+- Create a personal git-lab repository
+- Mirror this repository. _this clones the repository including all it's history and branches._
+  1. `git clone --mirror https://github.com/ramsesk/git-lab.git`
+  2. `cd git-lab.git`
+  3. `git push --mirror https://github.com/YOURUSERNAME/YOUR-REPO.git`
+    - **replace the link**
+  4. `cd ..`
+  5. Remove the `git-lab.git` folder.
+    - windows: `Remove-Item -Path ".\git-lab.git" -Recurse -Force
+    - unix: `rm -rf ./git-lab.git`
+  6. Clone the newly mirrored repository: `git clone https://github.com/YOURUSERNAME/YOUR-REPO.git`
+
+
+
+
+
 Example Python project
 ======================
 

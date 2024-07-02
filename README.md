@@ -1,3 +1,43 @@
+# Git-lab training
+This repository contain a template python project with some industry standards/best-practices included.
+
+For the git-lab we will use this repository to learn `git`.
+
+To get started it is best to mirror-clone this repository into a fresh github repository.
+
+- Login to your personal github account
+  - Create an account if you don't have one already
+- Create a personal git-lab repository
+- Mirror this repository. _this clones the repository including all it's history and branches._
+  1. `git clone --mirror https://github.com/ramsesk/git-lab.git`
+  2. `cd git-lab.git`
+  3. `git push --mirror https://github.com/YOURUSERNAME/YOUR-REPO.git`
+    - **replace the link**
+  4. `cd ..`
+  5. Remove the `git-lab.git` folder.
+    - windows: `Remove-Item -Path ".\git-lab.git" -Recurse -Force
+    - unix: `rm -rf ./git-lab.git`
+  6. Clone the newly mirrored repository: `git clone https://github.com/YOURUSERNAME/YOUR-REPO.git`
+
+**_optional:_** go to your github repository. go to actions. Enable the actions.
+
+Exercises:
+
+- Create a new branch `feature/readme-update`. Change the README.MD. Push the branch to github. Merge the change via a Pull-Request (PR).
+  - If you are working on github, fix atleast that the github-actions badge is pointing to your repositories badge. [**HINT**](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)
+- Which branches are available in the repository?
+- Merge `feature/improve-readme` via a PR.
+  - To learn, it's better to resolve any issues locally.
+- Merge `feature/fix-bla` via a PR
+
+_Extra exercises:_
+
+- If you are familiar with Python: fix branch `feature/extra-things-for-the-library`
+  - This requires some python programming
+- **Remove the Password from the repo**
+  - Why doesn't it work if you just remove the `secret_password.txt` file from the repo?
+  - How can we make sure no one can see the `secret_password.txt`? --> [HINT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
+
 Example Python project
 ======================
 
@@ -31,16 +71,8 @@ This project features examples of:
 - Setting up a build on github actions
 - ...
 
-Installation
-------------
 
-**TODO**
-
-For now I don't think a project that is started from this template will have a clear installation instruction.
-Perhaps it will have clear "starting development" instructions instead.
-
-Usage
------
+## Usage
 
 To use this repository as a template, perform the following steps:
 
@@ -57,8 +89,7 @@ To use this repository as a template, perform the following steps:
   Do a text search (e.g. `grep`) to check you've found all references.
 - remove any unneeded dependencies in `pyproject.toml` (e.g. `numpy`)
 
-Development guide
------------------
+## Development guide
 
 ### Requirements
 
@@ -93,7 +124,10 @@ poetry install
 
 ### make/run script?
 
-**TODO** write some explanation on the make/run script.
+All the tools that are used in this repo can be run via a script.
+A windows powershell script has been added for support on Windows: `./scripts/make.ps1`.
+On unix based systems the Makefile can be used.
+
 
 ### Checks
 
@@ -140,36 +174,17 @@ On Windows:
 
 ### Style and formatting
 
-`black` can be used to automatically format code, so you don\'t have to
+`ruff` can be used to automatically format code, so you don\'t have to
 worry about the nitty-gritty of code style.
 
 ```bash
-make format-check
+make check
 ```
 
 On Windows:
 
 ```powershell
-.\scripts\make.ps1 format-check
-```
-
-Use `isort` to automatically sort imports.
-
-```bash
-make isort-check
-```
-
-On Windows:
-
-```powershell
-.\scripts\make.ps1 isort-check
-```
-
-`flake8` checks some additional things that can't be fixed automatically
-with `black`. Run this command to list any issues:
-
-```bash
-make lint
+.\scripts\make.ps1 check
 ```
 
 On Windows:
@@ -178,16 +193,16 @@ On Windows:
 .\scripts\make.ps1 lint
 ```
 
-To fix `black` and `isort` issues automatically, run:
+To fix `ruff` issues automatically, run:
 
 ```bash
-make fix
+make format
 ```
 
 On Windows:
 
 ```powershell
-.\scripts\make.ps1 fix
+.\scripts\make.ps1 format
 ```
 
 ### Documentation
